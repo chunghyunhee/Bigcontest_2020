@@ -1,0 +1,34 @@
+{
+  "dataset" : "mnist",
+  "hpo_alg": "SA",
+  "hpo_params" : {
+    "n_params": 1,
+    "n_steps" : 100,
+    "T0" : 1.0,
+    "alpha" : 0.80,
+    "k" : 0.1,
+    "k_val" : 2,
+    "eval_key" : "accuracy"
+  },
+  "ml_alg" : "DNN",
+  "ml_params" : {
+    "model_param":{
+      "input_units" : "100",
+      "output_units" : "10",
+      "global_step" : "10",
+      "early_type" : "2",
+      "min_step" : "10",
+      "early_key" : "accuracy",
+      "early_value" : "0.98",
+      "algorithm_type" : "classifier"
+    },
+    "pbounds":{
+      "dropout_prob": [0, 0.5],
+      "optimizer_fn": ["Adam", "rmsprop", "Adadelta"],
+      "learning_rate": [0, 0.8],
+      "act_fn": ["Tanh", "ReLU", "Sigmoid"],
+      "hidden_units" : [3,1024],
+      "initial_weight" : [0.01, 1.0]
+    }
+  }
+}
